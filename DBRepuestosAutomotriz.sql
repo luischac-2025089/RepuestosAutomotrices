@@ -16,7 +16,7 @@ create table Empleados(
 id_empleado int auto_increment not null, 
 nombre_empleado varchar(60) not null, 
 apellido_empleado varchar(60) not null, 
-puesto_empleado varchar(20) null, 
+puesto_empleado varchar(20) not null, 
 email_empleado varchar(100) not null, 
 primary key PK_id_empleado(id_empleado) 
 ); 
@@ -95,131 +95,44 @@ Delimiter ;
 
 		-- CREATE --
 Delimiter $$
-	create procedure sp_Proveedor_create (p_nombre_empleado varchar(60), p_telefono_proveedor int, p_direccion varchar(100), p_email_proveedor varchar (100))
+	create procedure sp_Empleado_create (p_nombre_empleado varchar(60), p_apellido_empleado varchar (60), p_puesto_empleado varchar(20), p_email_empleado varchar (100))
 	begin
-    insert into Proveedores(nombre_empleado,telefono_proveedor, direccion, email_proveedor) 
-    values (p_nombre_empleado, p_telefono_proveedor, p_direccion, p_email_proveedor);
-    select last_insert_id() as id_proveedor;
+    insert into Empleados(nombre_empleado,apellido_empleado, puesto_empleado, email_empleado) 
+    values (p_nombre_empleado, p_apellido_empleado, p_puesto_empleado, p_email_empleado);
+    select last_insert_id() as id_empleado;
     end$$
 Delimiter ;
 
 		-- READ -- 
 Delimiter $$
-	create procedure sp_Proveedor_read_all ()
+	create procedure sp_Empleado_read_all ()
 	begin 
-		select * from Proveedores order by id_proveedor;
+		select * from Empleados order by id_empleado;
     end $$
 Delimiter ;
 
 		-- DELETE --
 Delimiter $$
-	create procedure sp_Proveedor_delete(in p_idPe int )
+	create procedure sp_Empleado_delete(in p_idEm int )
     begin
-    delete from Proveedores where id_proveedor = p_idPe;
+    delete from Empleados where id_empleado = p_idEm;
     select row_count() as filas_afectadas;
 	end $$
 Delimiter ;
 
 		-- UPDATE --
 Delimiter $$
-	create procedure sp_Proveedor_update(in p_id_proveedor int , in p_nombre_proveedor varchar(60), in p_telefono_proveedor int, in p_direccion varchar(100), in p_email_proveedor varchar (100))
+	create procedure sp_Empleado_update(in p_id_empleado int , in p_nombre_empleado varchar(60), in p_apellido_empleado varchar(60), in p_puesto_empleado varchar(20), in p_email_empleado varchar (100))
     begin
-    update Proveedores 
-    set id_proveedor = p_id_proveedor,
-		nombre_proveedor  = p_nombre_proveedor,
-        telefono_proveedor = p_telefono_proveedor,
-        direccion = p_direccion, 
-        email_proveedor = email_proveedor
-        where id_proveedor = p_id_proveedor;
+    update Empleados 
+    set id_empleado = p_id_empleado,
+		nombre_empleado  = p_nombre_empleado,
+        apellido_empleado = p_apellido_empleado,
+        puesto_empleado = p_puesto_empleado, 
+        email_empleado = p_email_empleado
+        where id_empleado = p_id_empleado;
         select row_count() as filas_afectadas;
     end $$
 Delimiter ;
 
---=======================================================================================================================================================--
-
-		-- CREATE --
-Delimiter $$
-	create procedure sp_Proveedor_create (p_nombre_proveedor varchar(60), p_telefono_proveedor int, p_direccion varchar(100), p_email_proveedor varchar (100))
-	begin
-    insert into Proveedores(nombre_proveedor,telefono_proveedor, direccion, email_proveedor) 
-    values (p_nombre_proveedor, p_telefono_proveedor, p_direccion, p_email_proveedor);
-    select last_insert_id() as id_proveedor;
-    end$$
-Delimiter ;
-
-		-- READ -- 
-Delimiter $$
-	create procedure sp_Proveedor_read_all ()
-	begin 
-		select * from Proveedores order by id_proveedor;
-    end $$
-Delimiter ;
-
-		-- DELETE --
-Delimiter $$
-	create procedure sp_Proveedor_delete(in p_idPe int )
-    begin
-    delete from Proveedores where id_proveedor = p_idPe;
-    select row_count() as filas_afectadas;
-	end $$
-Delimiter ;
-
-		-- UPDATE --
-Delimiter $$
-	create procedure sp_Proveedor_update(in p_id_proveedor int , in p_nombre_proveedor varchar(60), in p_telefono_proveedor int, in p_direccion varchar(100), in p_email_proveedor varchar (100))
-    begin
-    update Proveedores 
-    set id_proveedor = p_id_proveedor,
-		nombre_proveedor  = p_nombre_proveedor,
-        telefono_proveedor = p_telefono_proveedor,
-        direccion = p_direccion, 
-        email_proveedor = email_proveedor
-        where id_proveedor = p_id_proveedor;
-        select row_count() as filas_afectadas;
-    end $$
-Delimiter ;
-
---=======================================================================================================================================================--
-
-		-- CREATE --
-Delimiter $$
-	create procedure sp_Proveedor_create (p_nombre_proveedor varchar(60), p_telefono_proveedor int, p_direccion varchar(100), p_email_proveedor varchar (100))
-	begin
-    insert into Proveedores(nombre_proveedor,telefono_proveedor, direccion, email_proveedor) 
-    values (p_nombre_proveedor, p_telefono_proveedor, p_direccion, p_email_proveedor);
-    select last_insert_id() as id_proveedor;
-    end$$
-Delimiter ;
-
-		-- READ -- 
-Delimiter $$
-	create procedure sp_Proveedor_read_all ()
-	begin 
-		select * from Proveedores order by id_proveedor;
-    end $$
-Delimiter ;
-
-		-- DELETE --
-Delimiter $$
-	create procedure sp_Proveedor_delete(in p_idPe int )
-    begin
-    delete from Proveedores where id_proveedor = p_idPe;
-    select row_count() as filas_afectadas;
-	end $$
-Delimiter ;
-
-		-- UPDATE --
-Delimiter $$
-	create procedure sp_Proveedor_update(in p_id_proveedor int , in p_nombre_proveedor varchar(60), in p_telefono_proveedor int, in p_direccion varchar(100), in p_email_proveedor varchar (100))
-    begin
-    update Proveedores 
-    set id_proveedor = p_id_proveedor,
-		nombre_proveedor  = p_nombre_proveedor,
-        telefono_proveedor = p_telefono_proveedor,
-        direccion = p_direccion, 
-        email_proveedor = email_proveedor
-        where id_proveedor = p_id_proveedor;
-        select row_count() as filas_afectadas;
-    end $$
-Delimiter ;
         
