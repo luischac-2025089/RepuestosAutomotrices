@@ -135,4 +135,15 @@ Delimiter $$
     end $$
 Delimiter ;
 
+call sp_Empleado_create('Carlos', 'Pérez', 'Administrador', 'carlos.perez@empresa.com');
+call sp_Empleado_create('María', 'López', 'Secretaria', 'maria.lopez@empresa.com');
+call sp_Empleado_create('José', 'Ramírez', 'Contador', 'jose.ramirez@empresa.com');
+call sp_Empleado_create('Ana', 'Gómez', 'RecursosHumanos', 'ana.gomez@empresa.com');
+call sp_Empleado_create('Luis', 'Martínez', 'Supervisor', 'luis.martinez@empresa.com');
+call sp_Empleado_create('Daniela', 'Hernández', 'Asistente', 'daniela.hernandez@empresa.com');
+call sp_Empleado_create('Pedro', 'Castillo', 'Tesorero', 'pedro.castillo@empresa.com');
+call sp_Empleado_create('Sofía', 'Morales', 'Auditor', 'sofia.morales@empresa.com');
+call sp_Empleado_create('Miguel', 'Ruiz', 'Tecnico', 'miguel.ruiz@empresa.com');
+call sp_Empleado_create('Valeria', 'Mendoza', 'Coordinador', 'valeria.mendoza@empresa.com');
+
         
