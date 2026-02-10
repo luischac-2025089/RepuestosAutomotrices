@@ -146,4 +146,14 @@ call sp_Empleado_create('Sofía', 'Morales', 'Auditor', 'sofia.morales@empresa.c
 call sp_Empleado_create('Miguel', 'Ruiz', 'Tecnico', 'miguel.ruiz@empresa.com');
 call sp_Empleado_create('Valeria', 'Mendoza', 'Coordinador', 'valeria.mendoza@empresa.com');
 
-        
+CALL sp_Proveedor_create('Distribuidora Maya S.A.',50222334,'Zona 1, Ciudad de Guatemala','contacto@distribuidoramaya.com');
+CALL sp_Proveedor_create('Alimentos Chapín',50233445,'Zona 7, Ciudad de Guatemala','ventas@alimentoschapin.gt');
+CALL sp_Proveedor_create('Tecnología Quetzal',50246677,'Zona 10, Ciudad de Guatemala','info@tecnologiaquetzal.gt');
+CALL sp_Proveedor_create('Ferretería El Volcán',55667788,'Antigua Guatemala, Sacatepéquez','ferreteria@elvolcan.gt');
+CALL sp_Proveedor_create('Textiles Ixchel',50266778,'Quetzaltenango, Quetzaltenango','ventas@textilesixchel.gt');
+CALL sp_Proveedor_create('Agroservicios Petén',50289900,'Flores, Petén','contacto@agroserviciospeten.gt');
+CALL sp_Proveedor_create('Bebidas La Ceiba',50288911,'Puerto Barrios, Izabal','info@bebidaslaceiba.gt');
+CALL sp_Proveedor_create('Constructora Tikal',50291122,'Zona 9, Ciudad de Guatemala','proyectos@constructoratikal.gt');
+CALL sp_Proveedor_create('Servicios El Quiché',50212233,'Santa Cruz del Quiché, Quiché','servicios@elquiche.gt');
+CALL sp_Proveedor_create('Importadora Xela',50231244,'Zona 3, Quetzaltenango','importaciones@xela.gt');
+  
