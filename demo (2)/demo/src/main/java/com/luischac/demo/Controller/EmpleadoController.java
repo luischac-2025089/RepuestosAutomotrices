@@ -1,6 +1,6 @@
 package com.luischac.demo.Controller;
 
-import com.luischac.demo.Model.Empleado;
+import com.luischac.demo.Entity.Empleado;
 import com.luischac.demo.Service.EmpleadoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

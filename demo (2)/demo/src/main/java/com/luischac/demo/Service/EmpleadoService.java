@@ -1,6 +1,6 @@
 package com.luischac.demo.Service;
 
-import com.luischac.demo.Model.Empleado;
+import com.luischac.demo.Entity.Empleado;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

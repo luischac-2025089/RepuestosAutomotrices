@@ -1,4 +1,4 @@
-package com.luischac.demo.Model;
+package com.luischac.demo.Entity;
 
 import jakarta.persistence.*;
 
