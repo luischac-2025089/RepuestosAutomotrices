@@ -20,7 +20,7 @@ public class Proveedor {
     private String direccion;
 
     @Column (name = "email_proveedor")
-    private Integer emailProveedor;
+    private String emailProveedor;
 
     public Integer getIdProveedor() {
         return idProveedor;
@@ -54,11 +54,11 @@ public class Proveedor {
         this.direccion = direccion;
     }
 
-    public Integer getEmailProveedor() {
+    public String getEmailProveedor() {
         return emailProveedor;
     }
 
-    public void setEmailProveedor(Integer emailProveedor) {
+    public void setEmailProveedor(String emailProveedor) {
         this.emailProveedor = emailProveedor;
     }
 }
