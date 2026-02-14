@@ -1,7 +1,6 @@
 package com.luischac.demo.Service;
 
 
-import com.luischac.demo.Entity.Empleado;
 import com.luischac.demo.Entity.Proveedor;
 import com.luischac.demo.Repository.ProveedorRepository;
 import org.springframework.stereotype.Service;
