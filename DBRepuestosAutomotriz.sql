@@ -91,6 +91,17 @@ Delimiter $$
     end $$
 Delimiter ;
 
+call sp_Proveedor_create('AutoPartes GT', 5551001, 'Zona 1, Ciudad de Guatemala', 'autopartesgt@gmail.com');
+call sp_Proveedor_create('Motores Express', 5551002, 'Zona 5, Ciudad de Guatemala', 'motoresexpress@gmail.com');
+call sp_Proveedor_create('Repuestos Centro', 5551003, 'Zona 10, Ciudad de Guatemala', 'repuestoscentro@gmail.com');
+call sp_Proveedor_create('Distribuidora El Motor', 5551004, 'Zona 12, Ciudad de Guatemala', 'elmotor@gmail.com');
+call sp_Proveedor_create('Importadora Técnica', 5551005, 'Zona 7, Ciudad de Guatemala', 'importadoratec@gmail.com');
+call sp_Proveedor_create('AutoRepuestos del Sur', 5551006, 'Villa Nueva', 'autorepuestossur@gmail.com');
+call sp_Proveedor_create('Suministros Mecánicos', 5551007, 'Mixco', 'suministrosmec@gmail.com');
+call sp_Proveedor_create('Repuestos Premium', 5551008, 'Zona 14, Ciudad de Guatemala', 'premium@gmail.com');
+call sp_Proveedor_create('Motores y Más', 5551009, 'Zona 6, Ciudad de Guatemala', 'motoresymas@gmail.com');
+call sp_Proveedor_create('Distribuidora Automotriz GT', 5551010, 'Zona 18, Ciudad de Guatemala', 'automotrizgt@gmail.com');
+
 --=======================================================================================================================================================--
 
 		-- CREATE --
@@ -146,6 +157,7 @@ call sp_Empleado_create('Sofía', 'Morales', 'Auditor', 'sofia.morales@empresa.c
 call sp_Empleado_create('Miguel', 'Ruiz', 'Tecnico', 'miguel.ruiz@empresa.com');
 call sp_Empleado_create('Valeria', 'Mendoza', 'Coordinador', 'valeria.mendoza@empresa.com');
 
+<<<<<<< HEAD
 CALL sp_Proveedor_create('Distribuidora Maya S.A.',50222334,'Zona 1, Ciudad de Guatemala','contacto@distribuidoramaya.com');
 CALL sp_Proveedor_create('Alimentos Chapín',50233445,'Zona 7, Ciudad de Guatemala','ventas@alimentoschapin.gt');
 CALL sp_Proveedor_create('Tecnología Quetzal',50246677,'Zona 10, Ciudad de Guatemala','info@tecnologiaquetzal.gt');
@@ -157,3 +169,135 @@ CALL sp_Proveedor_create('Constructora Tikal',50291122,'Zona 9, Ciudad de Guatem
 CALL sp_Proveedor_create('Servicios El Quiché',50212233,'Santa Cruz del Quiché, Quiché','servicios@elquiche.gt');
 CALL sp_Proveedor_create('Importadora Xela',50231244,'Zona 3, Quetzaltenango','importaciones@xela.gt');
   
+=======
+-- =======================================================================================================================================================--
+
+delimiter $$
+create procedure sp_Repuestos_create (
+	p_nombre_repuesto varchar(60),
+    p_categoria_repuesto varchar(60),
+    p_precio_compra double,
+    p_precio_venta double,
+    p_id_proveedor int
+)
+begin
+	insert into Repuestos(nombre_repuesto, categoria_repuesto, precio_compra, precio_venta, id_proveedor)
+    values (p_nombre_repuesto, p_categoria_repuesto, p_precio_compra, p_precio_venta, p_id_proveedor);
+    select last_insert_id() as id_repuesto;
+end$$
+delimiter ;
+
+delimiter $$
+create procedure sp_Repuestos_read_all ()
+begin
+	select * from Repuestos order by id_repuesto;
+end$$
+delimiter ;
+
+delimiter $$
+create procedure sp_Repuestos_delete(in p_idRe int)
+begin
+	delete from Repuestos where id_repuesto = p_idRe;
+    select row_count() as filas_afectadas;
+end$$
+delimiter ;
+
+delimiter $$
+create procedure sp_Repuestos_update(
+	in p_id_repuesto int,
+    in p_nombre_repuesto varchar(60),
+    in p_categoria_repuesto varchar(60),
+    in p_precio_compra double,
+    in p_precio_venta double,
+    in p_id_proveedor int
+)
+begin
+	update Repuestos
+    set id_repuesto = p_id_repuesto,
+		nombre_repuesto = p_nombre_repuesto,
+        categoria_repuesto = p_categoria_repuesto,
+        precio_compra = p_precio_compra,
+        precio_venta = p_precio_venta,
+        id_proveedor = p_id_proveedor
+	where id_repuesto = p_id_repuesto;
+    select row_count() as filas_afectadas;
+end$$
+delimiter ;
+        
+-- =======================================================================================================================================================--
+        
+        delimiter $$
+create procedure sp_Ventas_create (
+	p_fecha_venta date,
+    p_cantidad int,
+    p_total double,
+    p_id_empleado int,
+    p_id_repuesto int
+)
+begin
+	insert into Ventas(fecha_venta, cantidad, total, id_empleado, id_repuesto)
+    values (p_fecha_venta, p_cantidad, p_total, p_id_empleado, p_id_repuesto);
+    select last_insert_id() as id_venta;
+end$$
+delimiter ;
+
+delimiter $$
+create procedure sp_Ventas_read_all ()
+begin
+	select * from Ventas order by id_venta;
+end$$
+delimiter ;
+
+delimiter $$
+create procedure sp_Ventas_delete(in p_idVe int)
+begin
+	delete from Ventas where id_venta = p_idVe;
+    select row_count() as filas_afectadas;
+end$$
+delimiter ;
+
+delimiter $$
+create procedure sp_Ventas_update(
+	in p_id_venta int,
+    in p_fecha_venta date,
+    in p_cantidad int,
+    in p_total double,
+    in p_id_empleado int,
+    in p_id_repuesto int
+)
+begin
+	update Ventas
+    set id_venta = p_id_venta,
+		fecha_venta = p_fecha_venta,
+        cantidad = p_cantidad,
+        total = p_total,
+        id_empleado = p_id_empleado,
+        id_repuesto = p_id_repuesto
+	where id_venta = p_id_venta;
+    select row_count() as filas_afectadas;
+end$$
+delimiter ;
+
+call sp_Repuestos_create('Filtro de aceite','Motor',50,75,1);
+call sp_Repuestos_create('Pastillas de freno','Frenos',120,180,2);
+call sp_Repuestos_create('Bujía NGK','Encendido',25,40,1);
+call sp_Repuestos_create('Radiador','Refrigeración',600,850,3);
+call sp_Repuestos_create('Batería 12V','Eléctrico',450,600,2);
+call sp_Repuestos_create('Amortiguador','Suspensión',300,450,3);
+call sp_Repuestos_create('Correa de distribución','Motor',200,320,1);
+call sp_Repuestos_create('Disco de freno','Frenos',220,350,2);
+call sp_Repuestos_create('Alternador','Eléctrico',900,1200,3);
+call sp_Repuestos_create('Filtro de aire','Motor',40,65,1);
+
+call sp_Ventas_create('2026-02-01',2,150,1,1);
+call sp_Ventas_create('2026-02-02',1,180,2,2);
+call sp_Ventas_create('2026-02-03',4,160,1,3);
+call sp_Ventas_create('2026-02-04',1,850,3,4);
+call sp_Ventas_create('2026-02-05',1,600,2,5);
+call sp_Ventas_create('2026-02-06',2,900,1,6);
+call sp_Ventas_create('2026-02-07',1,320,3,7);
+call sp_Ventas_create('2026-02-08',3,1050,2,8);
+call sp_Ventas_create('2026-02-09',1,1200,1,9);
+call sp_Ventas_create('2026-02-10',2,130,3,10);
+
+>>>>>>> 671b9b4 (feat: se agregaron procedimientos almacenados a DBRepuestosAutomotriz.sql)
